@@ -12,6 +12,8 @@ RUN apk --update add \
 	composer install --working-dir=/var/www/html && \
     mkdir -p /var/www/html/ && chown -R apache:apache /var/www/html
 
+RUN apt-get update && apt-get install -y libssl-dev
+
 COPY configs/httpd.conf /etc/apache2/httpd.conf
 COPY configs/app.conf /etc/apache2/sites/
 COPY configs/php.ini /etc/php7/php.ini
